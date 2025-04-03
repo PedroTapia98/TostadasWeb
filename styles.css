@@ -1,0 +1,295 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f1e4;
+    color: #333;
+}
+header {
+    background-color: rgba(139, 0, 0, 0.8);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+.logo {
+    width: 120px;
+    border-radius: 50%;
+}
+.cart-icon {
+    width: 40px;
+    cursor: pointer;
+    position: relative;
+    left: -100px;
+
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+nav ul li {
+    display: inline;
+}
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 100px 50px 50px;
+    background-color: #d9a07c;
+    margin-top: 70px;
+}
+.hero-text {
+    width: 50%;
+}
+.carousel {
+    width: 50%;
+    overflow: hidden;
+    position: relative;
+    height: 400px;
+}
+.carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+.carousel img.active {
+    opacity: 1;
+}
+.hero button {
+    background-color: #8B0000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 18px;
+}
+.productos-carousel {
+    display: flex;
+    overflow: hidden;
+    width: 80%;
+    margin: auto;
+    position: relative;
+}
+.productos-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+.producto {
+    min-width: 300px;
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+}
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(139, 0, 0, 0.8);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+.prev {
+    left: 0;
+}
+.next {
+    right: 0;
+}
+footer {
+    background-color: #8B0000;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+.gallery {
+    --d: 10s; /* duración */
+  
+    display: grid;
+    width: 220px;
+    position: relative;
+    left: -250px;
+    
+  }
+  
+  .gallery > img {
+    grid-area: 1/1;
+    width: 110%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: 10px solid #f2f2f2;
+    box-shadow: 0 0 4px #0007;
+    z-index: 2;
+    animation: 
+      slide var(--d) infinite,
+      z-order var(--d) infinite steps(1);
+  }
+  
+  .gallery img:last-child {
+    animation-name: slide, z-order-last;
+  }
+  
+  /* Asignando animaciones con diferentes retrasos */
+  .gallery > img:nth-child(1) { animation-delay: 0s; }
+  .gallery > img:nth-child(2) { animation-delay: -1.66s; }
+  .gallery > img:nth-child(3) { animation-delay: -3.33s; }
+  .gallery > img:nth-child(4) { animation-delay: -5s; }
+  .gallery > img:nth-child(5) { animation-delay: -6.66s; }
+  .gallery > img:nth-child(6) { animation-delay: -8.33s; }
+  
+  @keyframes slide {
+    8.33%  { transform: translateX(120%) rotate(-10deg); }
+    0%, 100%, 16.66% { transform: translateX(0%) rotate(0deg); }
+  }
+  
+  @keyframes z-order {
+    8.33%, 16.66% { z-index: 1; }
+    83.33% { z-index: 2; }
+  }
+  
+  @keyframes z-order-last {
+    8.33%, 16.66% { z-index: 1; }
+    75% { z-index: 2; }
+  }
+  .container {
+    position: relative;
+    height: auto;
+    width: 800px;
+    margin: 50px auto;
+    display: flex;
+  }
+  
+  .card {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: -1rem 0 3rem #000;
+    transition: 0.4s ease-out;
+    position: relative;
+    left: 0px;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(139, 0, 0, 0.7);
+}
+/* Imagen dentro de la tarjeta */
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* La imagen se ajusta sin perder proporción */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+/* Overlay para mejorar visibilidad del texto */
+.card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Oscurece la imagen */
+    z-index: 1;
+}
+  
+  .card:not(:first-child) {
+      margin-left: -50px;
+  }
+  
+  .card:hover {
+    transform: translateY(-20px);
+    transition: 0.4s ease-out;
+  }
+  
+  .card:hover ~ .card {
+    position: relative;
+    left: 50px;
+    transition: 0.4s ease-out;
+  }
+  
+  .title {
+    color: white;
+    font-weight: 700;
+    position: relative;
+    z-index: 2; /* Para que el texto esté por encima */
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  .bar {
+    position: absolute;
+    top: 100px;
+    left: 20px;
+    height: 5px;
+    width: 150px;
+  }
+  
+  .emptybar {
+    background-color: #2e3033;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .filledbar {
+    position: absolute;
+    top: 0px;
+    z-index: 3;
+    width: 0px;
+    height: 100%;
+    background: rgb(0,154,217);
+    background: linear-gradient(90deg, rgba(0,154,217,1) 0%, rgba(217,147,0,1) 65%, rgba(255,186,0,1) 100%);
+    transition: 0.6s ease-out;
+  }
+  
+  .card:hover .filledbar {
+    width: 120px;
+    transition: 0.4s ease-out;
+  }
+  
+  .circle {
+    position: absolute;
+    top: 150px;
+    left: calc(50% - 60px);
+  }
+  
+  .stroke {
+    stroke: white;
+    stroke-dasharray: 360;
+    stroke-dashoffset: 360;
+    transition: 0.6s ease-out;
+  }
+  
+  svg {
+    fill: #17141d;
+    stroke-width: 2px;
+  }
+  
+  .card:hover .stroke {
+    stroke-dashoffset: 100;
+    transition: 0.6s ease-out;
+  }
